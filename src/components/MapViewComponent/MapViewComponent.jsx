@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 import { getRandomLocation } from "../../utils";
@@ -49,13 +48,13 @@ function MapViewComponent() {
       </div>
       <div className="flex flex-col mx-auto">
         <div className="text-lg pb-5">
-          El vehículo <span className="capitalize">{car.make}</span>&nbsp;
-          modelo <span className="capitalize">{car.model}</span>&nbsp;
-          del año {car.year} se encuentra en:          
+        El vehículo <span className="capitalize">{car.make}</span>&nbsp;
+        modelo <span className="capitalize">{car.model}</span>&nbsp;
+        del año {car.year} se encuentra en:          
         </div>
-        <div className="flex justify-center">
-          <div id="map" style={{ height: '50vh', width: '50vw' }}></div>
-        </div>
+      <div className="flex justify-center">
+        <div id="map" style={{ height: '50vh', width: '50vw' }}></div>
+      </div>
       </div>
     </div>
   );
