@@ -37,7 +37,7 @@ function MapViewComponent() {
 
   useEffect(() => {
     initializeMap();
-  }, [latitude, longitude]);
+  }, [latitude, longitude]); // Asegúrate de que la función useEffect tenga las dependencias adecuadas
 
   return (
     <div className='flex flex-col min-h-screen bg-[#001E2C] text-white'>
@@ -49,13 +49,13 @@ function MapViewComponent() {
       </div>
       <div className="flex flex-col mx-auto">
         <div className="text-lg pb-5">
-        El vehículo <span className="capitalize">{car.make}</span>&nbsp;
-        modelo <span className="capitalize">{car.model}</span>&nbsp;
-        del año {car.year} se encuentra en:          
+          El vehículo <span className="capitalize">{car.make}</span>&nbsp;
+          modelo <span className="capitalize">{car.model}</span>&nbsp;
+          del año {car.year} se encuentra en:          
         </div>
-      <div className="flex justify-center">
-        <div id="map" style={{ height: '50vh', width: '50vw' }}></div>
-      </div>
+        <div className="flex justify-center">
+          <div id="map" style={{ height: '50vh', width: '50vw' }}></div>
+        </div>
       </div>
     </div>
   );
