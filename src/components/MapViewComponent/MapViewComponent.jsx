@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
 import { getRandomLocation } from "../../utils";
 import ButtonPrincipalComponent from "../ButtonComponent/ButtonComponent";
@@ -37,7 +37,7 @@ function MapViewComponent() {
 
   useEffect(() => {
     initializeMap();
-  }, [latitude, longitude]); // Asegúrate de que la función useEffect tenga las dependencias adecuadas
+  }, [latitude, longitude]);
 
   return (
     <div className='flex flex-col min-h-screen bg-[#001E2C] text-white'>
