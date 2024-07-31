@@ -1,36 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ButtonPrincipalComponent,
   ButtonSecondaryComponent
 } from '../components';
 import { inputSelect, inputCheckboxLabel } from '../utils/tailwindClasses';
+import { useFilters } from '../contexts/FilterContext';
 
 export default function FilterForm({ onFilter, onClose }) {
-  const [selectedType, setSelectedType] = useState('');
-  const [selectedMake, setSelectedMake] = useState('');
-  const [selectedModel, setSelectedModel] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-  const [selectedTransmission, setSelectedTransmission] = useState('');
-  const minCity = 13;
-  const maxCity = 23;
-  const minHighway = 19;
-  const maxHighway = 33;
-  const minCombo = 15;
-  const maxCombo = 27;
-  const [selectedCityMpg, setSelectedCityMpg] = useState(minCity);
-  const [selectedHighwayMpg, setSelectedHighwayMpg] = useState(minHighway);
-  const [selectedCombinationMpg, setSelectedCombinationMpg] = useState(minCombo);
+  const { filters, filterOptions } = useFilters();
+  const [selectedType, setSelectedType] = useState(filters.type || '');
+  const [selectedMake, setSelectedMake] = useState(filters.make || '');
+  const [selectedModel, setSelectedModel] = useState(filters.model || '');
+  const [selectedYear, setSelectedYear] = useState(filters.year || '');
+  const [selectedTransmission, setSelectedTransmission] = useState(filters.transmission || '');
+  
+  const minCity = Math.min(...filterOptions.cityMpg);
+  const maxCity = Math.max(...filterOptions.cityMpg);
+  const minHighway = Math.min(...filterOptions.highwayMpg);
+  const maxHighway = Math.max(...filterOptions.highwayMpg);
+  const minCombo = Math.min(...filterOptions.combinationMpg);
+  const maxCombo = Math.max(...filterOptions.combinationMpg);
 
-  const filters = {
-    type: ['midsize car', 'subcompact car', 'compact car'],
-    make: ['audi', 'buick', 'cadillac', 'chevrolet', 'chrysler', 'cx automotive', 'dodge', 'ford', 'hyundai', 'mercury', 'nissan', 'subaru', 'toyota', 'volkswagen'],
-    model: ['100', 'century', 'regal', 'riviera', 'eldorado', 'seville', 'lumina', 'new yorker', 'xm v6', 'xm v6a', 'charger', 'dynasty', 'spirit', 'taurus', 'taurus sho', 'sonata', 'sable', 'maxima', 'loyale', 'corolla', 'golf iii / gti', 'jetta iii'],
-    year: [1993, 1985],
-    transmission: ['a', 'm'],
-    cityMpg: [17, 21, 18, 15, 13, 23, 19, 22, 16, 20],
-    highwayMpg: [22, 24, 28, 26, 25, 27, 23, 19, 33, 29, 31, 30],
-    combinationMpg: ['19', '23', '21', '20', '18', '17', '15', '27', '25', '22', '24', '26'],
-  };
+  const [selectedCityMpg, setSelectedCityMpg] = useState(filters.city_mpg || minCity);
+  const [selectedHighwayMpg, setSelectedHighwayMpg] = useState(filters.highway_mpg || minHighway);
+  const [selectedCombinationMpg, setSelectedCombinationMpg] = useState(filters.combination_mpg || minCombo);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -80,6 +73,18 @@ export default function FilterForm({ onFilter, onClose }) {
     onClose();
   };
 
+  // Ensure that the form is updated when filters change
+  useEffect(() => {
+    setSelectedType(filters.type || '');
+    setSelectedMake(filters.make || '');
+    setSelectedModel(filters.model || '');
+    setSelectedYear(filters.year || '');
+    setSelectedTransmission(filters.transmission || '');
+    setSelectedCityMpg(filters.city_mpg || minCity);
+    setSelectedHighwayMpg(filters.highway_mpg || minHighway);
+    setSelectedCombinationMpg(filters.combination_mpg || minCombo);
+  }, [filters, minCity, minHighway, minCombo]);
+
   return (
     <form className='flex flex-col'>
       <div className='flex justify-center w-full gap-5'>
@@ -87,7 +92,7 @@ export default function FilterForm({ onFilter, onClose }) {
           Tipo de auto:
           <select name="type" className={`${inputSelect}`} value={selectedType} onChange={handleFilterChange}>
             <option value="">Seleccione el tipo de auto</option>
-            {filters.type.map(type => (
+            {filterOptions.type.map(type => (
               <option key={type} value={type}>{type}</option>
             ))}
           </select>
@@ -97,7 +102,7 @@ export default function FilterForm({ onFilter, onClose }) {
           Año:
           <select name="year" className={`${inputSelect}`} value={selectedYear} onChange={handleFilterChange}>
             <option value="">Seleccione el año</option>
-            {filters.year.map(year => (
+            {filterOptions.year.map(year => (
               <option key={year} value={year}>{year}</option>
             ))}
           </select>
@@ -109,7 +114,7 @@ export default function FilterForm({ onFilter, onClose }) {
           Marca:
           <select name="make" className={`${inputSelect}`} value={selectedMake} onChange={handleFilterChange}>
             <option value="">Seleccione la marca</option>
-            {filters.make.map(make => (
+            {filterOptions.make.map(make => (
               <option key={make} value={make}>{make}</option>
             ))}
           </select>
@@ -119,7 +124,7 @@ export default function FilterForm({ onFilter, onClose }) {
           Modelo:
           <select name="model" className={`${inputSelect}`} value={selectedModel} onChange={handleFilterChange}>
             <option value="">Seleccione el modelo</option>
-            {filters.model.map(model => (
+            {filterOptions.model.map(model => (
               <option key={model} value={model}>{model}</option>
             ))}
           </select>
@@ -131,7 +136,7 @@ export default function FilterForm({ onFilter, onClose }) {
           Tipo de transmisión:
           <select name="transmission" className={`${inputSelect}`} value={selectedTransmission} onChange={handleFilterChange}>
             <option value="">Seleccione la transmisión</option>
-            {filters.transmission.map(transmission => (
+            {filterOptions.transmission.map(transmission => (
               <option key={transmission} value={transmission}>{transmission}</option>
             ))}
           </select>
@@ -141,7 +146,7 @@ export default function FilterForm({ onFilter, onClose }) {
       </div>
 
       <div className='flex justify-center gap-5 text-center mb-3'>
-          <label className={`${inputCheckboxLabel}`}>
+        <label className={`${inputCheckboxLabel}`}>
           Consumo mínimo en ciudad:&nbsp;
           <span>{selectedCityMpg}</span>
           <div className='flex'>
@@ -187,8 +192,8 @@ export default function FilterForm({ onFilter, onClose }) {
               onChange={handleFilterChange}
               min={minCombo}
               max={maxCombo}
-              />&nbsp;
-              <span>{maxCombo}</span>
+            />&nbsp;
+            <span>{maxCombo}</span>
           </div>
         </label>
       </div>

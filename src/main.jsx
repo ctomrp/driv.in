@@ -12,6 +12,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import MapViewComponent from './components/MapViewComponent/MapViewComponent.jsx';
+import { FiltersProvider } from './contexts/FilterContext.jsx'
 
 const queryClient = new QueryClient();
 
@@ -26,8 +27,10 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <FiltersProvider>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
     </QueryClientProvider>
+    </FiltersProvider>
   </React.StrictMode>
 );
