@@ -52,25 +52,23 @@ export default function App() {
     setFilters({});
     refetchCarList();
   };
-
-  const totalPages = Math.ceil(carList.length / itemsPerPage);
-
+  
   const applyFilters = (list) => {
     if (!filters || !Array.isArray(list)) return list;
-
+    
     return list.filter(car => {
       const inCityMpgRange = filters.city_mpg
-        ? car.city_mpg >= filters.city_mpg
-        : true;
-
+      ? car.city_mpg >= filters.city_mpg
+      : true;
+      
       const inHighwayMpgRange = filters.highway_mpg
-        ? car.highway_mpg >= filters.highway_mpg
-        : true;
-
+      ? car.highway_mpg >= filters.highway_mpg
+      : true;
+      
       const inCombinationMpgRange = filters.combination_mpg
-        ? car.combination_mpg >= filters.combination_mpg
-        : true;
-
+      ? car.combination_mpg >= filters.combination_mpg
+      : true;
+      
       return (
         (!filters.type || car.class.toLowerCase().includes(filters.type.toLowerCase())) &&
         (!filters.make || car.make.toLowerCase().includes(filters.make.toLowerCase())) &&
@@ -83,14 +81,15 @@ export default function App() {
       );
     });
   };
-
+  
   const sortedCarList = carList.sort((a, b) => {
     if (a[order] < b[order]) return orderDirection === 'asc' ? -1 : 1;
     if (a[order] > b[order]) return orderDirection === 'asc' ? 1 : -1;
     return 0;
   });
-
+  
   const filteredCarList = applyFilters(sortedCarList);
+  const totalPages = Math.ceil(filteredCarList.length / itemsPerPage);
 
   const paginatedCarList = filteredCarList.slice(
     (currentPage - 1) * itemsPerPage,
