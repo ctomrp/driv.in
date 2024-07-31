@@ -41,7 +41,7 @@ function MapViewComponent() {
   return (
     <div className='flex flex-col min-h-screen bg-[#001E2C] text-white'>
       <TitleComponent title={'Localización'} />
-      <div className='flex justify-end gap-5 me-20'>
+      <div className='flex justify-end gap-5 w-[94%] mb-10'>
         <ButtonPrincipalComponent onClick={() => navigate(-1)} type='button'>
           Volver
         </ButtonPrincipalComponent>
@@ -50,10 +50,10 @@ function MapViewComponent() {
         <div className="text-lg pb-5">
         El vehículo <span className="capitalize">{car.make}</span>&nbsp;
         modelo <span className="capitalize">{car.model}</span>&nbsp;
-        del año {car.year} se encuentra en:          
+        del año {car.year} se encuentra en las coordenadas: {[latitude, longitude].join(', ')}
         </div>
       <div className="flex justify-center">
-        <div id="map" style={{ height: '50vh', width: '50vw' }}></div>
+        <div id="map" style={{ height: '50vh', width: '89vw' }}></div>
       </div>
       </div>
     </div>

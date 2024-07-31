@@ -100,12 +100,15 @@ export default function App() {
     <div className='flex flex-col min-h-screen bg-[#001E2C]'>
       <TitleComponent title={'Gestor de Vehículos'} />
 
-      <div className='flex-1 flex flex-col'>
-        <div className='flex justify-end gap-5 w-[94%]'>
+      <div className='flex justify-end gap-5 w-[94%] mb-10'>
+        <div>
+
           <ButtonSecondaryComponent onClick={handleReset} type={'button'}>Limpiar filtro</ButtonSecondaryComponent>
-          <ButtonPrincipalComponent onClick={() => setModalFilter(prevState => !prevState)} type='button'>
-            Filtrar
-          </ButtonPrincipalComponent>
+        </div>
+          <div>
+
+          <ButtonPrincipalComponent onClick={() => setModalFilter(prevState => !prevState)} type='button'>Filtrar</ButtonPrincipalComponent>
+          </div>
         </div>
 
         {isLoading ? (
@@ -113,7 +116,7 @@ export default function App() {
             <LoaderComponent />
           </div>
         ) : (
-          <div className='flex-1 overflow-auto'>
+          <div className='flex-1 overflow-auto mb-10'>
             <CarTableComponent
               carList={paginatedCarList}
               order={order}
@@ -123,8 +126,6 @@ export default function App() {
             />
           </div>
         )}
-
-      </div>
 
       <footer className={`fixed w-full py-1 flex-none bottom-0 bg-[#EEF4F8]`}>
         <PaginationComponent
