@@ -1,0 +1,2 @@
+export const inputSelect = "text-[#737678] rounded-full w-full px-7 py-2.5 cursor-pointer bg-white outline-none focus:text-[#001E2C] focus:shadow-lg hover:text-[#0073A9] hover:shadow-lg transition duration-200 ease-in-out";
+export const inputCheckboxLabel = "text-[#001E2C] cursor-pointer hover:text-[#0073A9] transition duration-200 ease-in-out";

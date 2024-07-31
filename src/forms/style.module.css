@@ -1,0 +1,48 @@
+input[type='range'] {
+    --webkit-appearance: none;
+    background: transparent;
+    border: none;
+}
+
+/* Chrome, Safari) */
+input[type='range']::-webkit-slider-runnable-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #0073A9;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Firefox */
+input[type='range']::-moz-range-track {
+    background: #0073A9;
+    border-radius: 4px;
+}
+
+input[type='range']::-moz-range-thumb {
+    background: #0073A9;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Edge */
+input[type='range']::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type='range']::-ms-fill-lower {
+    background: #0073A9;
+    border-radius: 4px;
+}
+
+input[type='range']::-ms-thumb {
+    background: #0073A9;
+    cursor: pointer;
+}
