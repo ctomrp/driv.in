@@ -36,8 +36,8 @@ function MapViewComponent() {
   }
 
   useEffect(() => {
-    initializeMap(latitude, longitude);
-  }, []);
+    initializeMap();
+  }, [latitude, longitude]);
 
   return (
     <div className='flex flex-col min-h-screen bg-[#001E2C] text-white'>
