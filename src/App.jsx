@@ -100,7 +100,7 @@ export default function App() {
     <div className='flex flex-col min-h-screen bg-[#001E2C]'>
       <TitleComponent title={'Gestor de Vehículos'} />
 
-      <div className='flex justify-end gap-5 w-[94%] mb-10'>
+      <div className='flex justify-center md:justify-end gap-5 w-full md:w-[94%] mb-10'>
         <div>
 
           <ButtonSecondaryComponent onClick={handleReset} type={'button'}>Limpiar filtro</ButtonSecondaryComponent>
