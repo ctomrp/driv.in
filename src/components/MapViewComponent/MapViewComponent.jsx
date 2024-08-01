@@ -39,21 +39,22 @@ function MapViewComponent() {
   }, [latitude, longitude]);
 
   return (
-    <div className='flex flex-col min-h-screen bg-[#001E2C] text-white'>
-      <TitleComponent title={'Localización'} />
-      <div className='flex justify-center md:justify-end gap-5 w-full md:w-[94%] mb-5 md:mb-10'>
-        <div
-        data-tooltip-content={'Volver a la vista anterior'}
-        data-tooltip-id="tooltip"
-        data-tooltip-place="top"
+    <div className='flex flex-col min-h-screen bg-[#001E2C]'>
+      <TitleComponent title={'Localización'}>
+      <div className='flex justify-center items-center md:justify-end gap-0 xl:gap-5'>
+        <div className='max-w-none xl:w-[200px]'>
+        </div>
+        <div data-tooltip-content={'Volver a la vista anterior'}
+        data-tooltip-id='tooltip'
+        data-tooltip-place='top'
         >
-        <ButtonPrincipalComponent onClick={() => navigate(-1)} type='button'>
-          Volver
-        </ButtonPrincipalComponent>
+          <ButtonPrincipalComponent onClick={() => navigate('/')} type='button'>Volver</ButtonPrincipalComponent>
         </div>
       </div>
+      </TitleComponent>
+      
       <div className="flex flex-col mx-auto px-4 md:px-0">
-        <div className="text-lg pb-3 text-wrap mx-0 md:mx-5 text-justify">
+        <div className="text-lg pb-3 text-wrap mx-0 md:mx-5 text-justify text-[#fff]">
           El vehículo <span className="capitalize">{car.make}</span>&nbsp;
           modelo <span className="capitalize">{car.model}</span>&nbsp;
           del año {car.year} se encuentra en las coordenadas: {[latitude, longitude].join(', ')}

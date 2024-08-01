@@ -94,9 +94,8 @@ const handleFilter = (newFilters) => {
 
   return (
     <div className='flex flex-col min-h-screen bg-[#001E2C]'>
-      <TitleComponent title={'Gestor de Vehículos'} />
-
-      <div className='flex justify-center md:justify-end gap-5 w-full md:w-[94%] mb-10'>
+      <TitleComponent title={'Gestor de Vehículos'}>
+      <div className='flex flex-col xl:flex-row justify-center items-center md:justify-end gap-5'>
         <div data-tooltip-content={'Restablece la lista'}
         data-tooltip-id='tooltip'
         data-tooltip-place='top'
@@ -110,6 +109,9 @@ const handleFilter = (newFilters) => {
           <ButtonPrincipalComponent onClick={() => setModalFilter(prevState => !prevState)} type='button'>Filtrar</ButtonPrincipalComponent>
         </div>
       </div>
+      </TitleComponent>
+
+
 
       {isLoading ? (
         <div className='flex-1 flex items-center justify-center'>
@@ -117,13 +119,16 @@ const handleFilter = (newFilters) => {
         </div>
       ) : (
         <div className='flex-1 overflow-auto mb-10'>
+          <div className=''>
+
           <CarTableComponent
             carList={paginatedCarList}
             order={order}
             orderDirection={orderDirection}
             handleSort={handleSort}
             handleMap={handleMap}
-          />
+            />
+            </div>
         </div>
       )}
 
