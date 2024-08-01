@@ -97,7 +97,7 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
         </div>
         <button
           onClick={handleNext}
-          disabled={currentPage === totalPages}
+          disabled={currentPage >= totalPages}
           className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-[#001E2C] uppercase align-middle transition-all rounded-lg select-none hover:bg-[#EEF4F8] active:bg-[#EEF4F8] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
           data-tooltip-content={'Avanzar a la página siguiente'}
@@ -119,7 +119,7 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
         </button>
         <button
           onClick={handleLast}
-          disabled={currentPage === totalPages}
+          disabled={currentPage >= totalPages}
           className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-[#001E2C] uppercase align-middle transition-all rounded-lg select-none hover:bg-[#EEF4F8] active:bg-[#EEF4F8] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
           data-tooltip-content={'Ir a la última página'}
