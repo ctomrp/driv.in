@@ -50,6 +50,7 @@ export default function App() {
 
 const handleFilter = (newFilters) => {
   applyFilters(newFilters);
+  setCurrentPage(1);
 };
 
 

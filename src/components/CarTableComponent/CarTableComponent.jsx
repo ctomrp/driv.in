@@ -10,8 +10,8 @@ const CarTableComponent = ({ carList, order, orderDirection, handleSort, handleM
   };
 
   return (
-    <div className='bg-[#EEF4F8] rounded-none xl:rounded-3xl w-[300%] sm:[150%] md:w-[150%] xl:w-[90%] mx-auto'>
-
+    // <div className='bg-[#EEF4F8] rounded-none xl:rounded-3xl w-[300%] sm:[150%] md:w-[150%] xl:w-[90%] mx-auto'>
+<div className='bg-[#EEF4F8] rounded-none xl:rounded-3xl w-full overflow-x-auto mx-auto'>
     <table className={`table-auto mx-auto text-center border-separate cursor-pointer w-screen md:w-full py-4`}>
       <thead>
       <tr className='capitalize cursor-pointer select-none'>
