@@ -119,8 +119,8 @@ export default function App() {
           <LoaderComponent />
         </div>
       ) : (
-        <div className='flex-1 overflow-auto mb-10'>
-          <div className=''>
+        <div className='flex-1 mb-10'>
+          <div className='px-0 xl:px-20 mb-20'>
 
             <CarTableComponent
               carList={paginatedCarList}

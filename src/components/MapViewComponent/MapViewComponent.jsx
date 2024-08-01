@@ -53,8 +53,8 @@ function MapViewComponent() {
         </div>
       </TitleComponent>
 
-      <div className="flex flex-col mx-auto px-4 md:px-0">
-        <div className="text-lg pb-3 text-wrap mx-0 md:mx-5 text-justify text-[#fff]">
+      <div className="flex flex-col mx-auto px-0 xl:px-20 mb-20">
+        <div className="text-lg pb-3 text-wrap mx-auto px-5 md:px-20 text-justify text-[#fff]">
           El vehículo <span className="capitalize">{car.make}</span>&nbsp;
           modelo <span className="capitalize">{car.model}</span>&nbsp;
           del año {car.year} se encuentra en las coordenadas: {[latitude, longitude].join(', ')}
