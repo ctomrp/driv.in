@@ -93,7 +93,7 @@ const CarTableComponent = ({ carList, order, orderDirection, handleSort, handleM
       <tbody>
         {carList.length < 1 ? (
           <tr>
-            <td colSpan="9" className='text-center capitalize text-white pt-3 font-semibold'>
+            <td colSpan="9" className='text-center capitalize text-[#001E2C] pt-3 font-semibold'>
               No existen coincidencias
             </td>
           </tr>
