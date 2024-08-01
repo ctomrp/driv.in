@@ -9,9 +9,8 @@ function ButtonSecondaryComponent({
 }) {
   return (
     <button
-      className={`${className} ${
-        isDisabled ? s.btnDisabled : s.btn
-      } rounded-full font-semibold p-3`}
+      className={`${className} ${isDisabled ? s.btnDisabled : s.btn
+        } rounded-full font-semibold p-3`}
       disabled={isDisabled}
       onClick={onClick}
       type={type}

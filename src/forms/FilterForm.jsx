@@ -3,7 +3,9 @@ import {
   ButtonPrincipalComponent,
   ButtonSecondaryComponent
 } from '../components';
-import { inputSelect, inputCheckboxLabel } from '../utils/tailwindClasses';
+import { 
+  inputSelect, 
+  inputCheckboxLabel } from '../utils';
 import { Tooltip } from 'react-tooltip';
 import { useFilters } from '../contexts/FilterContext';
 
@@ -232,7 +234,7 @@ export default function FilterForm({ onFilter, onClose }) {
 
       <div className='flex flex-col-reverse justify-center gap-5 md:flex md:flex-row md:justify-between mt-5'>
         <div
-         className='flex'
+          className='flex'
           data-tooltip-content={'Cierra el formulario sin cambios'}
           data-tooltip-id='tooltip'
           data-tooltip-place='bottom'
@@ -242,7 +244,7 @@ export default function FilterForm({ onFilter, onClose }) {
           </ButtonSecondaryComponent>
         </div>
         <div
-        className='flex'
+          className='flex'
           data-tooltip-content={'Aplica los filtros a los resultados'}
           data-tooltip-id='tooltip'
           data-tooltip-place='bottom'

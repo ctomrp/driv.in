@@ -81,8 +81,8 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
               key={number}
               onClick={() => handleClick(number)}
               className={`relative h-10 max-h-[40px] w-10 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase transition-all ${currentPage === number
-                  ? 'bg-[#001E2C] text-white shadow-md shadow-[#EEF4F8] hover:shadow-lg hover:shadow-[#EEF4F8]'
-                  : 'text-[#001E2C] hover:bg-[#EEF4F8] active:bg-[#EEF4F8]'
+                ? 'bg-[#001E2C] text-white shadow-md shadow-[#EEF4F8] hover:shadow-lg hover:shadow-[#EEF4F8]'
+                : 'text-[#001E2C] hover:bg-[#EEF4F8] active:bg-[#EEF4F8]'
                 } disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
               type="button"
               data-tooltip-content={`Ir a la página ${number}`}

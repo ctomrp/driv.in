@@ -1,26 +1,26 @@
 .btn {
-    background-color: var(--color-principal-0);
-    color: #fff;
-    width: 200px;
-    transition: ease-in-out 0.2s;
-  }
-  
-  .btn:hover {
-    background-color: var(--color-principal-1);
-    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
-  }
-  
-  .btn:active {
-    background-color: #009bd3;
-  }
-  
-  .btn::first-letter {
-    text-transform: capitalize;
-  }
-  
-  .btnDisabled {
-    background-color: var(--color-gray);
-    color: #fff;
-    width: 200px;
-    transition: ease-in-out 0.2s;
-  }
+  background-color: var(--color-principal-0);
+  color: #fff;
+  width: 200px;
+  transition: ease-in-out 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--color-principal-1);
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+  background-color: #009bd3;
+}
+
+.btn::first-letter {
+  text-transform: capitalize;
+}
+
+.btnDisabled {
+  background-color: var(--color-gray);
+  color: #fff;
+  width: 200px;
+  transition: ease-in-out 0.2s;
+}

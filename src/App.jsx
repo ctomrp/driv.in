@@ -27,13 +27,13 @@ export default function App() {
   const itemsPerPage = 20;
   const [modalFilter, setModalFilter] = useState(false);
 
-  const { data: carList = [], 
+  const { data: carList = [],
     isLoading } = useQuery({
-    queryKey: ['cars', limit],
-    queryFn: () => CarAPI.getAllCars(limit),
-    refetchOnMount: false,
-    staleTime: 10000,
-  });
+      queryKey: ['cars', limit],
+      queryFn: () => CarAPI.getAllCars(limit),
+      refetchOnMount: false,
+      staleTime: 10000,
+    });
 
   const handleSort = (sortBy) => {
     if (order === sortBy) {
@@ -48,10 +48,10 @@ export default function App() {
     navigate(`/map/${index}`, { state: { car } });
   };
 
-const handleFilter = (newFilters) => {
-  applyFilters(newFilters);
-  setCurrentPage(1);
-};
+  const handleFilter = (newFilters) => {
+    applyFilters(newFilters);
+    setCurrentPage(1);
+  };
 
 
   const handleReset = () => {
@@ -96,20 +96,20 @@ const handleFilter = (newFilters) => {
   return (
     <div className='flex flex-col min-h-screen bg-[#001E2C]'>
       <TitleComponent title={'Gestor de Vehículos'}>
-      <div className='flex flex-col xl:flex-row justify-center items-center md:justify-end gap-5'>
-        <div data-tooltip-content={'Restablece la lista'}
-        data-tooltip-id='tooltip'
-        data-tooltip-place='top'
-        >
-          <ButtonSecondaryComponent onClick={handleReset} type={'button'}>Limpiar filtro</ButtonSecondaryComponent>
+        <div className='flex flex-col xl:flex-row justify-center items-center md:justify-end gap-5'>
+          <div data-tooltip-content={'Restablece la lista'}
+            data-tooltip-id='tooltip'
+            data-tooltip-place='top'
+          >
+            <ButtonSecondaryComponent onClick={handleReset} type={'button'}>Limpiar filtro</ButtonSecondaryComponent>
+          </div>
+          <div data-tooltip-content={'Filtra los resultados'}
+            data-tooltip-id='tooltip'
+            data-tooltip-place='top'
+          >
+            <ButtonPrincipalComponent onClick={() => setModalFilter(prevState => !prevState)} type='button'>Filtrar</ButtonPrincipalComponent>
+          </div>
         </div>
-        <div data-tooltip-content={'Filtra los resultados'}
-        data-tooltip-id='tooltip'
-        data-tooltip-place='top'
-        >
-          <ButtonPrincipalComponent onClick={() => setModalFilter(prevState => !prevState)} type='button'>Filtrar</ButtonPrincipalComponent>
-        </div>
-      </div>
       </TitleComponent>
 
 
@@ -122,14 +122,14 @@ const handleFilter = (newFilters) => {
         <div className='flex-1 overflow-auto mb-10'>
           <div className=''>
 
-          <CarTableComponent
-            carList={paginatedCarList}
-            order={order}
-            orderDirection={orderDirection}
-            handleSort={handleSort}
-            handleMap={handleMap}
+            <CarTableComponent
+              carList={paginatedCarList}
+              order={order}
+              orderDirection={orderDirection}
+              handleSort={handleSort}
+              handleMap={handleMap}
             />
-            </div>
+          </div>
         </div>
       )}
 
