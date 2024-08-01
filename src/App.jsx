@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip';
 
 import { CarAPI } from './services/carAPI';
 import {
@@ -14,6 +15,7 @@ import {
 } from './components';
 import FilterForm from './forms/FilterForm';
 import { useFilters } from './contexts/FilterContext';
+import 'react-tooltip/dist/react-tooltip.css'
 
 export default function App() {
   const navigate = useNavigate();
@@ -95,10 +97,16 @@ const handleFilter = (newFilters) => {
       <TitleComponent title={'Gestor de Vehículos'} />
 
       <div className='flex justify-center md:justify-end gap-5 w-full md:w-[94%] mb-10'>
-        <div>
+        <div data-tooltip-content={'Restablece la lista'}
+        data-tooltip-id='tooltip'
+        data-tooltip-place='top'
+        >
           <ButtonSecondaryComponent onClick={handleReset} type={'button'}>Limpiar filtro</ButtonSecondaryComponent>
         </div>
-        <div>
+        <div data-tooltip-content={'Filtra los resultados'}
+        data-tooltip-id='tooltip'
+        data-tooltip-place='top'
+        >
           <ButtonPrincipalComponent onClick={() => setModalFilter(prevState => !prevState)} type='button'>Filtrar</ButtonPrincipalComponent>
         </div>
       </div>
@@ -131,6 +139,8 @@ const handleFilter = (newFilters) => {
       <ModalComponent showModal={modalFilter} onClose={() => setModalFilter(false)}>
         <FilterForm onFilter={handleFilter} onClose={() => setModalFilter(false)} />
       </ModalComponent>
+      <Tooltip id="tooltip" />
+
     </div>
   );
 }

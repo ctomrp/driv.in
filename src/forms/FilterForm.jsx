@@ -4,6 +4,7 @@ import {
   ButtonSecondaryComponent
 } from '../components';
 import { inputSelect, inputCheckboxLabel } from '../utils/tailwindClasses';
+import { Tooltip } from 'react-tooltip';
 import { useFilters } from '../contexts/FilterContext';
 
 export default function FilterForm({ onFilter, onClose }) {
@@ -13,7 +14,7 @@ export default function FilterForm({ onFilter, onClose }) {
   const [selectedModel, setSelectedModel] = useState(filters.model || '');
   const [selectedYear, setSelectedYear] = useState(filters.year || '');
   const [selectedTransmission, setSelectedTransmission] = useState(filters.transmission || '');
-  
+
   const minCity = Math.min(...filterOptions.cityMpg);
   const maxCity = Math.max(...filterOptions.cityMpg);
   const minHighway = Math.min(...filterOptions.highwayMpg);
@@ -87,7 +88,11 @@ export default function FilterForm({ onFilter, onClose }) {
   return (
     <form className='flex flex-col'>
       <div className='flex justify-center w-full gap-5'>
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}>
+        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+          data-tooltip-content={'Filtrar por tipo de auto'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Tipo de auto:
           <select name="type" className={`${inputSelect}`} value={selectedType} onChange={handleFilterChange}>
             <option value="">Seleccione el tipo de auto</option>
@@ -97,7 +102,11 @@ export default function FilterForm({ onFilter, onClose }) {
           </select>
         </label>
 
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}>
+        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+          data-tooltip-content={'Filtrar por año'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Año:
           <select name="year" className={`${inputSelect}`} value={selectedYear} onChange={handleFilterChange}>
             <option value="">Seleccione el año</option>
@@ -109,7 +118,11 @@ export default function FilterForm({ onFilter, onClose }) {
       </div>
 
       <div className='flex justify-center w-full gap-5'>
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}>
+        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+          data-tooltip-content={'Filtrar por marca'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Marca:
           <select name="make" className={`${inputSelect}`} value={selectedMake} onChange={handleFilterChange}>
             <option value="">Seleccione la marca</option>
@@ -119,7 +132,11 @@ export default function FilterForm({ onFilter, onClose }) {
           </select>
         </label>
 
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}>
+        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+          data-tooltip-content={'Filtrar por modelo'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Modelo:
           <select name="model" className={`${inputSelect}`} value={selectedModel} onChange={handleFilterChange}>
             <option value="">Seleccione el modelo</option>
@@ -131,7 +148,11 @@ export default function FilterForm({ onFilter, onClose }) {
       </div>
 
       <div className='flex justify-center w-full gap-5'>
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}>
+        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+          data-tooltip-content={'Filtrar por transmisión'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Tipo de transmisión:
           <select name="transmission" className={`${inputSelect}`} value={selectedTransmission} onChange={handleFilterChange}>
             <option value="">Seleccione la transmisión</option>
@@ -145,7 +166,11 @@ export default function FilterForm({ onFilter, onClose }) {
       </div>
 
       <div className='flex justify-center gap-5 text-center mb-3'>
-        <label className={`${inputCheckboxLabel}`}>
+        <label className={`${inputCheckboxLabel}`}
+          data-tooltip-content={'Filtrar por consumo mínimo en ciudad'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Consumo mínimo en ciudad:&nbsp;
           <span>{selectedCityMpg}</span>
           <div className='flex'>
@@ -162,7 +187,11 @@ export default function FilterForm({ onFilter, onClose }) {
           </div>
         </label>
 
-        <label className={`${inputCheckboxLabel}`}>
+        <label className={`${inputCheckboxLabel}`}
+          data-tooltip-content={'Filtrar por consumo mínimo en carretera'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Consumo mínimo en carretera:&nbsp;
           <span>{selectedHighwayMpg}</span>
           <div className='flex'>
@@ -179,7 +208,11 @@ export default function FilterForm({ onFilter, onClose }) {
           </div>
         </label>
 
-        <label className={`${inputCheckboxLabel}`}>
+        <label className={`${inputCheckboxLabel}`}
+          data-tooltip-content={'Filtrar por consumo mixto mínimo'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
           Consumo mixto mínimo:&nbsp;
           <span>{selectedCombinationMpg}</span>
           <div className='flex'>
@@ -198,13 +231,26 @@ export default function FilterForm({ onFilter, onClose }) {
       </div>
 
       <div className='flex w-100 justify-between mt-5'>
-        <ButtonSecondaryComponent type="button" onClick={() => onClose()}>
-          Cancelar
-        </ButtonSecondaryComponent>
-        <ButtonPrincipalComponent type="button" onClick={handleApplyFilters}>
-          Aplicar
-        </ButtonPrincipalComponent>
+        <div
+          data-tooltip-content={'Cierra el formulario sin cambios'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
+          <ButtonSecondaryComponent type="button" onClick={() => onClose()}>
+            Cancelar
+          </ButtonSecondaryComponent>
+        </div>
+        <div
+          data-tooltip-content={'Aplica los filtros a los resultados'}
+          data-tooltip-id='tooltip'
+          data-tooltip-place='bottom'
+        >
+          <ButtonPrincipalComponent type="button" onClick={handleApplyFilters}>
+            Aplicar
+          </ButtonPrincipalComponent>
+        </div>
       </div>
+      <Tooltip id='tooltip' />
     </form>
   );
 }

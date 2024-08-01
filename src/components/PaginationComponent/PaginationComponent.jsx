@@ -1,3 +1,5 @@
+import { Tooltip } from "react-tooltip";
+
 const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, className }) => {
   const getVisiblePages = (current, total) => {
     if (total <= 5) {
@@ -45,6 +47,9 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
           disabled={currentPage === 1}
           className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-[#001E2C] uppercase align-middle transition-all rounded-lg select-none hover:bg-[#EEF4F8] active:bg-[#EEF4F8] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
+          data-tooltip-content={'Ir a la primera página'}
+          data-tooltip-id="tooltip"
+          data-tooltip-place="top"
         >
           Inicio
         </button>
@@ -53,6 +58,9 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
           disabled={currentPage === 1}
           className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-[#001E2C] uppercase align-middle transition-all rounded-lg select-none hover:bg-[#EEF4F8] active:bg-[#EEF4F8] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
+          data-tooltip-content={'Volver a la página anterior'}
+          data-tooltip-id="tooltip"
+          data-tooltip-place="top"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +85,9 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
                   : 'text-[#001E2C] hover:bg-[#EEF4F8] active:bg-[#EEF4F8]'
                 } disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none`}
               type="button"
+              data-tooltip-content={`Ir a la página ${number}`}
+              data-tooltip-id="tooltip"
+              data-tooltip-place="top"
             >
               <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 {number}
@@ -89,6 +100,9 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
           disabled={currentPage === totalPages}
           className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-[#001E2C] uppercase align-middle transition-all rounded-lg select-none hover:bg-[#EEF4F8] active:bg-[#EEF4F8] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
+          data-tooltip-content={'Avanzar a la página siguiente'}
+          data-tooltip-id="tooltip"
+          data-tooltip-place="top"
         >
           Siguiente
           <svg
@@ -108,10 +122,14 @@ const PaginationComponent = ({ totalPages, currentPage, setCurrentPage, classNam
           disabled={currentPage === totalPages}
           className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-[#001E2C] uppercase align-middle transition-all rounded-lg select-none hover:bg-[#EEF4F8] active:bg-[#EEF4F8] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
+          data-tooltip-content={'Ir a la última página'}
+          data-tooltip-id="tooltip"
+          data-tooltip-place="top"
         >
           Fin
         </button>
       </div>
+      <Tooltip id="tooltip" />
     </div>
   );
 };

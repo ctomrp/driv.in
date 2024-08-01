@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import L from 'leaflet';
+import { Tooltip } from "react-tooltip";
 
 import { getRandomLocation } from "../../utils";
 import ButtonPrincipalComponent from "../ButtonComponent/ButtonComponent";
@@ -41,9 +42,15 @@ function MapViewComponent() {
     <div className='flex flex-col min-h-screen bg-[#001E2C] text-white'>
       <TitleComponent title={'Localización'} />
       <div className='flex justify-center md:justify-end gap-5 w-full md:w-[94%] mb-5 md:mb-10'>
+        <div
+        data-tooltip-content={'Volver a la vista anterior'}
+        data-tooltip-id="tooltip"
+        data-tooltip-place="top"
+        >
         <ButtonPrincipalComponent onClick={() => navigate(-1)} type='button'>
           Volver
         </ButtonPrincipalComponent>
+        </div>
       </div>
       <div className="flex flex-col mx-auto px-4 md:px-0">
         <div className="text-lg pb-3 text-wrap mx-0 md:mx-5 text-justify">
@@ -55,6 +62,7 @@ function MapViewComponent() {
           <div id="map" className="w-full md:w-[89vw]" style={{ height: '50vh' }}></div>
         </div>
       </div>
+      <Tooltip id="tooltip" />
     </div>
   );
 }
