@@ -86,8 +86,8 @@ export default function FilterForm({ onFilter, onClose }) {
   }, [filters, minCity, minHighway, minCombo]);
 
   return (
-    <form className='flex flex-col'>
-      <div className='flex justify-center w-full gap-5'>
+    <form className='flex flex-col w-screen md:w-full px-5 md:p-0'>
+      <div className='flex flex-col md:flex md:flex-row justify-center w-full gap-5'>
         <label className={`${inputCheckboxLabel} mb-3 flex-1`}
           data-tooltip-content={'Filtrar por tipo de auto'}
           data-tooltip-id='tooltip'
@@ -117,7 +117,7 @@ export default function FilterForm({ onFilter, onClose }) {
         </label>
       </div>
 
-      <div className='flex justify-center w-full gap-5'>
+      <div className='flex flex-col md:flex md:flex-row justify-center w-full gap-5'>
         <label className={`${inputCheckboxLabel} mb-3 flex-1`}
           data-tooltip-content={'Filtrar por marca'}
           data-tooltip-id='tooltip'
@@ -147,7 +147,7 @@ export default function FilterForm({ onFilter, onClose }) {
         </label>
       </div>
 
-      <div className='flex justify-center w-full gap-5'>
+      <div className='flex flex-col md:flex md:flex-row justify-center w-full gap-5'>
         <label className={`${inputCheckboxLabel} mb-3 flex-1`}
           data-tooltip-content={'Filtrar por transmisión'}
           data-tooltip-id='tooltip'
@@ -165,7 +165,7 @@ export default function FilterForm({ onFilter, onClose }) {
         <div className='flex-1'></div>
       </div>
 
-      <div className='flex justify-center gap-5 text-center mb-3'>
+      <div className='flex flex-col md:flex md:flex-row justify-center items-center gap-5 text-center mb-3'>
         <label className={`${inputCheckboxLabel}`}
           data-tooltip-content={'Filtrar por consumo mínimo en ciudad'}
           data-tooltip-id='tooltip'
@@ -230,22 +230,24 @@ export default function FilterForm({ onFilter, onClose }) {
         </label>
       </div>
 
-      <div className='flex w-100 justify-between mt-5'>
+      <div className='flex flex-col-reverse justify-center gap-5 md:flex md:flex-row md:justify-between mt-5'>
         <div
+         className='flex'
           data-tooltip-content={'Cierra el formulario sin cambios'}
           data-tooltip-id='tooltip'
           data-tooltip-place='bottom'
         >
-          <ButtonSecondaryComponent type="button" onClick={() => onClose()}>
+          <ButtonSecondaryComponent className={'flex-1'} type="button" onClick={() => onClose()}>
             Cancelar
           </ButtonSecondaryComponent>
         </div>
         <div
+        className='flex'
           data-tooltip-content={'Aplica los filtros a los resultados'}
           data-tooltip-id='tooltip'
           data-tooltip-place='bottom'
         >
-          <ButtonPrincipalComponent type="button" onClick={handleApplyFilters}>
+          <ButtonPrincipalComponent className={'flex-1'} type="button" onClick={handleApplyFilters}>
             Aplicar
           </ButtonPrincipalComponent>
         </div>
