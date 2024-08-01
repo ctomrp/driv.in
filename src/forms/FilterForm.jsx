@@ -88,7 +88,7 @@ export default function FilterForm({ onFilter, onClose }) {
   return (
     <form className='flex flex-col w-screen md:w-full px-5 md:p-0'>
       <div className='flex flex-col md:flex md:flex-row justify-center w-full gap-5'>
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+        <label className={`${inputCheckboxLabel} md:mb-3 flex-1`}
           data-tooltip-content={'Filtrar por tipo de auto'}
           data-tooltip-id='tooltip'
           data-tooltip-place='bottom'
@@ -118,7 +118,7 @@ export default function FilterForm({ onFilter, onClose }) {
       </div>
 
       <div className='flex flex-col md:flex md:flex-row justify-center w-full gap-5'>
-        <label className={`${inputCheckboxLabel} mb-3 flex-1`}
+        <label className={`${inputCheckboxLabel} md:mb-3 flex-1`}
           data-tooltip-content={'Filtrar por marca'}
           data-tooltip-id='tooltip'
           data-tooltip-place='bottom'
