@@ -25,15 +25,13 @@ export default function App() {
   const itemsPerPage = 20;
   const [modalFilter, setModalFilter] = useState(false);
 
-  const { data: carList = [], refetch: refetchCarList, isLoading } = useQuery(
-    ['cars', limit],
-    () => CarAPI.getAllCars(limit),
-    { keepPreviousData: true }
-  );
-
-  useEffect(() => {
-    refetchCarList();
-  }, [filters, order, orderDirection]);
+  const { data: carList = [], 
+    isLoading } = useQuery({
+    queryKey: ['cars', limit],
+    queryFn: () => CarAPI.getAllCars(limit),
+    refetchOnMount: false,
+    staleTime: 10000,
+  });
 
   const handleSort = (sortBy) => {
     if (order === sortBy) {
@@ -50,13 +48,11 @@ export default function App() {
 
 const handleFilter = (newFilters) => {
   applyFilters(newFilters);
-  refetchCarList();
 };
 
 
   const handleReset = () => {
     resetFilters();
-    refetchCarList();
   };
 
   const applyFiltersToList = (list) => {

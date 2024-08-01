@@ -73,7 +73,6 @@ export default function FilterForm({ onFilter, onClose }) {
     onClose();
   };
 
-  // Ensure that the form is updated when filters change
   useEffect(() => {
     setSelectedType(filters.type || '');
     setSelectedMake(filters.make || '');
