@@ -7,7 +7,7 @@ function TitleComponent({ title, children }) {
     const navigate = useNavigate();
     return (
         <div className='flex flex-col xl:flex xl:flex-row justify-center items-center w-full mb-24 bg-[#EEF4F8] p-5'>
-            <div className='flex-1 flex justify-center align-middle'>
+            <div className='hidden flex-1 xl:flex justify-center align-middle'>
                 <img src={`${logo}`} width={'96px'} className='p-3 cursor-pointer' onClick={() => navigate('/')} alt=""
                     data-tooltip-content={'Home'}
                     data-tooltip-id='tooltip'

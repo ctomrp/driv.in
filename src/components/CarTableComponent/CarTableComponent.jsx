@@ -116,8 +116,8 @@ const CarTableComponent = ({ carList, order, orderDirection, handleSort, handleM
             ))
           )}
         </tbody>
-        <Tooltip id="tooltip" />
       </table>
+        <Tooltip id="tooltip" />
     </div>
   );
 };

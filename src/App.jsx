@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
@@ -115,7 +115,7 @@ export default function App() {
 
 
       {isLoading ? (
-        <div className='flex-1 flex items-center justify-center'>
+        <div className=''>
           <LoaderComponent />
         </div>
       ) : (
